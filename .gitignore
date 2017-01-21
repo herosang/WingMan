@@ -2,3 +2,6 @@
 .idea
 .DS_Store
 virtualenv
+
+
+FrontEnd/node_modules
