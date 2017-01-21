@@ -11,7 +11,6 @@ def get(gender):
 		directory = 'dataset/female'
 		num_images = 1000
 	if(gender == 'both'):
-
 		directory = 'dataset/both'
 		num_images = 1000
 
@@ -19,6 +18,3 @@ def get(gender):
 	random_sample = [ files[i] for i in sorted(random.sample(xrange(len(files)), num_images)) ]
 
 	return random_sample
-
-
-	
