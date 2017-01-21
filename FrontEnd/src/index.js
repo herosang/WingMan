@@ -9,6 +9,7 @@ render( <AppContainer><App/></AppContainer>, document.querySelector("#app"));
 if (module && module.hot) {
   module.hot.accept('./app.js', () => {
     const App = require('./app.js').default;
+    let store = createStore(todoApp)
     render(
       <AppContainer>
         <MuiThemeProvider>
