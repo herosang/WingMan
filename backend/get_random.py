@@ -9,11 +9,11 @@ def get(gender):
 		num_images = 468
 	if(gender == 'female'):
 		directory = 'dataset/female'
-		num_images = 1063
+		num_images = 1000
 	if(gender == 'both'):
 
 		directory = 'dataset/both'
-		num_images = 1113
+		num_images = 1000
 
 	files = [f for f in listdir(directory) if isfile(join(directory, f))]
 	random_sample = [ files[i] for i in sorted(random.sample(xrange(len(files)), num_images)) ]
