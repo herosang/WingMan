@@ -28,7 +28,7 @@ function reduceSwipes(state={
     }
 
     case POPULATE_DONE:{
-      state = {...state, fetching: false, current: state.current.concat(action.payload);
+      state = {...state, fetching: false, current: state.current.concat(action.payload)};
       break;
     }
 
