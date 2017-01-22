@@ -23,7 +23,7 @@ function reduceSwipes(state={
     }
 
     case POPULATE:{
-      state = {...state, fetching: true};
+      state = state;
       break;
     }
 

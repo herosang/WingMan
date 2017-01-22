@@ -15,10 +15,10 @@ class Select extends React.Component {
 
 
 	}
-	componentDidMount(){
-		console.log(this.props);
-		this.props.populate();
-		$.getJSON('/Faces/api/initial')
+	componentDidMount()
+		console.log(props);
+		this.props.startPopulate();
+		$.getJSON('/faces/api/inital')
       	.then((data) => {
         	console.log(data.results);
       	});
