@@ -43,8 +43,9 @@ openfaceModelDir = os.path.join(modelDir, 'openface')
 
 def getList(gender):
 
-		bash_command = "dataset/classifier.py --verbose infer dataset/classifier.pkl dataset/female/*.jpg" 
+		bash_command = "classifier.py --dlibFacePredictor /root/openface/models/dlib/shape_predictor_68_face_landmarks.dat --networkModel /root/openface/models/openface/nn4.small2.v1.t7 infer classifier.pkl dataset/"+gender+"/*.jpg" 
 		import subprocess
+		print(bash_command)
 		process = subprocess.Popen(bash_command.split(), stdout=subprocess.PIPE)
 		output, error = process.communicate()
 		ratings = output

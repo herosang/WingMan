@@ -1,9 +1,12 @@
 FROM bamos/openface
 
+RUN useradd -d /root/ -m app
+
 WORKDIR /root/
 RUN pip install Django djangorestframework django-webpack-loader
 
-COPY ./wingman /root/wingman/
-WORKDIR /root/wingman/
+COPY ./wingman/ /root/
+RUN chown -R app:app /root/
+USER app
 
-CMD [ "python", "./manage.py runserver 0.0.0.0:8000" ]
+CMD python ./manage.py runserver 0.0.0.0:${PORT}

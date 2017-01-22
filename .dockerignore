@@ -5,3 +5,4 @@ virtualenv
 *.pyc
 node_modules
 FrontEnd/node_modules
+.git
