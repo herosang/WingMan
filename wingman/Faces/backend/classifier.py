@@ -145,7 +145,7 @@ def train(args):
     elif args.classifier == 'GaussianNB':
         clf = GaussianNB()
     elif args.classifier == 'SGDClassifier':
-        clf = SGDClassifier(loss='log')
+        clf = SGDClassifier(loss='modified_huber')
 
     # ref: https://jessesw.com/Deep-Learning/
     elif args.classifier == 'DBN':

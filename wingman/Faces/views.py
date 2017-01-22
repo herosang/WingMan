@@ -33,7 +33,7 @@ class ApiViewSet(viewsets.ViewSet):
 			return Response(status=400)
 
 		cache.set('gender', gender)
-		cache.set('index', num_images)
+		cache.set('index', 0)
 		directory = join(settings.BASE_DIR, 'Faces', 'backend', 'dataset', gender)
 		files = [f for f in listdir(directory) if isfile(join(directory, f)) and f.endswith('jpg')]
 		random_sample = [ files[i] for i in sorted(random.sample(range(len(files)), num_images)) ]
@@ -45,7 +45,7 @@ class ApiViewSet(viewsets.ViewSet):
 	def train(self, request):
 		image_file = request.POST.get('image_file')
 		choice = request.POST.get('choice')
-		index = cache.get('index', num_images)
+		index = cache.get('index', 0)
 
 		if image_file is None or choice is None:
 			return Response(status=400)
