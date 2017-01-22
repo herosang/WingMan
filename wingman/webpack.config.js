@@ -51,6 +51,6 @@ module.exports = {
         //tells webpack where to look for modules
         modulesDirectories: ['node_modules'],
         //extensions that should be used to resolve modules
-        extensions: ['', '.js', '.jsx','.html'] 
+        extensions: ['', '.js', '.jsx'] 
     }   
 }
