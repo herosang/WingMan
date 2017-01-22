@@ -4,7 +4,6 @@ from django.http import HttpResponse
 from rest_framework.response import Response
 from rest_framework.decorators import detail_route, list_route
 from rest_framework import viewsets
-from . import templates
 # Create your views here.
 
 class MainViewSet(viewsets.ViewSet):
