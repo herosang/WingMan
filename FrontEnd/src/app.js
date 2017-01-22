@@ -33,7 +33,7 @@ export default class App extends React.Component {
       <div style = {main}>
       	<div style = {app}>
         	<Header />
-        	<Image image = {this.state.image}/>
+        	<Image />
         	<Select />
         </div> 
       </div>

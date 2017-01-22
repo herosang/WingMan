@@ -1,9 +1,12 @@
 import React from 'react';
 import { connect } from "react-redux";
 import { compose } from 'redux'
-
+import * as actionCreators from './actions/actions.js'
+import { bindActionCreators } from 'redux'
 
 class Image extends React.Component {
+
+	
   render() {
 
   	const imageStyle = {
@@ -34,12 +37,14 @@ class Image extends React.Component {
   }
 }
 
-// compose multiple "decorators"
-const enhance = compose(
-  connect((store) =>{
-  	image: store.currentList[store.index],
-  }),
-)
+function mapStateToProps(state) {
+	console.log(state);
+  	return {
+    	image: ((state.index > 0) ? state.current[state.index] : 
+    		'https://s-media-cache-ak0.pinimg.com/736x/e5/a4/81/e5a481526621647b1afaeb87738dad99.jpg')
+  	}
+}
 
-export default enhance(Image)
+export default connect(mapStateToProps)(Image);
+
 

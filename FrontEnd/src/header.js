@@ -5,7 +5,6 @@ export default class Header extends React.Component {
   	const headerContainer = {
 		//font-family: 'Raleway', sans-serif;
 		fontFamily: "'Righteous', cursive",
-
 		display: "flex",
 		justifyContent: "center",
 		letterSpacing: "2px",

@@ -2,7 +2,12 @@ module.exports = [
 	{
 		test: /\.jsx?$/,
 		exclude: /(node_modules|bower_components|public\/)/,
-		loader: "babel"
+		loader: "babel",
+		query:
+			{
+  				presets: ["es2015", "stage-0", "react"]
+			}
+		
 	},
 	{
 		test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
