@@ -9,4 +9,4 @@ COPY ./wingman/ /root/
 RUN chown -R app:app /root/
 USER app
 
-CMD [ "python", "./manage.py runserver 0.0.0.0:", "echo ${PORT}" ]
+CMD python ./manage.py runserver 0.0.0.0:${PORT}
