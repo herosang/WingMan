@@ -1,5 +1,6 @@
 from django.conf.urls import url
 from rest_framework import routers
+from django.views.decorators.csrf import csrf_exempt
 from .views import *
 
 urlpatterns = [
@@ -7,5 +8,5 @@ urlpatterns = [
 ]
 
 router = routers.DefaultRouter()
-router.register(r'main', MainViewSet, 'main')
+router.register(r'api', MainViewSet, 'api')
 urlpatterns += router.urls
