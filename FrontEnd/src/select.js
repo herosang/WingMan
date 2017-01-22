@@ -35,7 +35,7 @@ class Select extends React.Component {
 			image_file: this.props.current[this.props.index],
 		}).done(function( data ) {
 			this.props.populateDone(data.images);
-  		}
+  		});
   	}
 	
 	handleClickTwo(e) {
@@ -46,7 +46,7 @@ class Select extends React.Component {
 			image_file: this.props.current[this.props.index],
 		}).done(function( data ) {
 			this.props.populateDone(data.images);
-  		}
+  		});
   	}  	
 
   render() {
