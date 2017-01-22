@@ -7,7 +7,7 @@ function reduceSwipes(state={
     likeList: [],
     dislikeList:[],
     index: -1,
-    curent: [],
+    current: [],
   }, action) {
 
 

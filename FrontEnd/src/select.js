@@ -29,24 +29,24 @@ class Select extends React.Component {
 
 	handleClickOne(e) {
   		console.log(this.props);
+      $.post('/Faces/api/train/', {
+      choice: 'like',
+      image_file: this.props.current[this.props.index+1],
+    }).done(function( data ) {
+      this.props.populateDone(data.images);
+      });
   		this.props.swipeRight(this.props.current[this.props.index+1]);
-  		$.post('/Faces/api/train/', {
-			choice: 'like',
-			image_file: this.props.current[this.props.index],
-		}).done(function( data ) {
-			this.props.populateDone(data.images);
-  		});
   	}
 	
 	handleClickTwo(e) {
 		console.log(this.props);
+    $.post('/Faces/api/train/', {
+      choice: 'dislike',
+      image_file: this.props.current[this.props.index+1],
+    }).done(function( data ) {
+      this.props.populateDone(data.images);
+      });
   		this.props.swipeRight(this.props.current[this.props.index+1]);
-  		$.post('/Faces/api/train/', {
-			choice: 'dislike',
-			image_file: this.props.current[this.props.index],
-		}).done(function( data ) {
-			this.props.populateDone(data.images);
-  		});
   	}  	
 
   render() {
