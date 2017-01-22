@@ -20,11 +20,12 @@ from rest_framework import viewsets
 from backend.classifier import infer
 
 
+num_images = 3
+
 class ApiViewSet(viewsets.ViewSet):
                 
 	@list_route(methods=['get'])
 	def initial(self, request):
-		num_images = 10
 
 		gender = request.GET.get('gender', 'both')
 
@@ -44,7 +45,7 @@ class ApiViewSet(viewsets.ViewSet):
 	def train(self, request):
 		image_file = request.POST.get('image_file')
 		choice = request.POST.get('choice')
-		index = cache.get('index', 10)
+		index = cache.get('index', num_images)
 
 		if image_file is None or choice is None:
 			return Response(status=400)
@@ -74,7 +75,7 @@ class ApiViewSet(viewsets.ViewSet):
 		# Random choice
 		random_probability = random.random()
 		if random_probability < exp(-0.1 * index):
-			random_sample = [ files[i] for i in sorted(random.sample(range(len(files)), 10)) ]
+			random_sample = [ files[i] for i in sorted(random.sample(range(len(files)), num_images)) ]
 			response = Response({'images': map(lambda filename: static(join('dataset', gender, filename)), random_sample)})
 		else:
 			prediction_file = directory + "/prediction_file.pkl"
@@ -92,6 +93,7 @@ class ApiViewSet(viewsets.ViewSet):
 
 			with open (prediction_file, 'rb') as fp:
 				predictions = pickle.load(fp)
+				predictions = predictions[:num_images]
 
 			response = Response({'images': map(lambda prediction: static(join('dataset', gender, basename(prediction[2]))), predictions)})
 
