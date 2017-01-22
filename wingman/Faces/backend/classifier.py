@@ -26,7 +26,7 @@ import argparse
 import cv2
 import os
 import pickle
-
+from glob import glob
 from operator import itemgetter
 
 import numpy as np
@@ -53,7 +53,7 @@ dlibModelDir = os.path.join(modelDir, 'dlib')
 openfaceModelDir = os.path.join(modelDir, 'openface')
 
 
-def getRep(imgPath, multiple=False):
+def getRep(imgPath, multiple=False, ):
     start = time.time()
     bgrImg = cv2.imread(imgPath)
     if bgrImg is None:
@@ -179,6 +179,9 @@ def infer(args, multiple=False):
     with open(args.classifierModel, 'r') as f:
         (le, clf) = pickle.load(f)
     ratings = []
+    if len(args.imgs) == 1:
+        args.imgs = glob(args.imgs[0])
+
     rand_smpl = [ args.imgs[i] for i in sorted(random.sample(xrange(len(args.imgs)), 50)) ]
     print(rand_smpl)
     for img in rand_smpl:
@@ -207,10 +210,13 @@ def infer(args, multiple=False):
                 print("  + Distance from the mean: {}".format(dist))
 
             if prediction == 'like':
-                ratings.append({confidence,prediction,img})
+                ratings.append((confidence,prediction,img))
 
     ratings.sort()
     print ratings[:10]
+    with open(args.predictionFile, "w") as fp:
+        pickle.dump(ratings[:10], fp)
+
     return ratings[:10]
 
 
@@ -293,6 +299,10 @@ if __name__ == '__main__':
         'classifierModel',
         type=str,
         help='The Python pickle representing the classifier. This is NOT the Torch network model, which can be set with --networkModel.')
+    inferParser.add_argument(
+        'predictionFile',
+        type=str,
+        help='File to save predictions to.')
     inferParser.add_argument('imgs', type=str, nargs='+',
                              help="Input image.")
     inferParser.add_argument('--multi', help="Infer multiple faces in image",

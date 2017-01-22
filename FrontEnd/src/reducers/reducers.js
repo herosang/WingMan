@@ -13,12 +13,12 @@ function reduceSwipes(state={
 
   switch (action.type) {
     case SWIPE_RIGHT:  {
-      state = {...state, likeList: state.likeList.concat[action.payload], index: state.index++};
+      state = {...state, likeList: state.likeList.concat([action.payload]), index: state.index+=1};
       break;
     }
 
     case SWIPE_LEFT:{
-      state = {...state, dislikeList: state.dislikeList.concat[action.payload], index: state.index++};
+      state = {...state, dislikeList: state.dislikeList.concat([action.payload]), index: state.index+=1};
       break; 
     }
 
