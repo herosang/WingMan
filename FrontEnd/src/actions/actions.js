@@ -25,7 +25,7 @@ export function swipeLeft(url) {
 
 export function startPopulate() {
   //api call
-  return { type: POPULATE, payload: none }
+  return { type: POPULATE, payload: null }
 }
 
 
