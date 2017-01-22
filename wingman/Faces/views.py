@@ -23,9 +23,9 @@ class ApiViewSet(viewsets.ViewSet):
 
 		directory = join(settings.BASE_DIR, 'Faces', 'backend', 'dataset', gender)
 		files = [f for f in listdir(directory) if isfile(join(directory, f)) and f.endswith('jpg')]
-		random_sample = [ files[i] for i in sorted(random.sample(xrange(len(files)), num_images)) ]
+		random_sample = [ files[i] for i in sorted(random.sample(range(len(files)), num_images)) ]
 
 		return Response({'images': map(lambda filename: static(join('dataset', gender, filename)), random_sample)})
-
+		
 def index(request):
 	return render(request, 'test.html')
