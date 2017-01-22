@@ -2,7 +2,7 @@
   "name": "wingman",
   "version": "1.0.0",
   "description": "",
-  "main": "index.html",
+  "main": "index.js",
   "dependencies": {},
   "devDependencies": {
     "babel-core": "^6.22.1",
