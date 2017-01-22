@@ -1,9 +1,11 @@
+
 from django.shortcuts import render
 from rest_framework.decorators import list_route
 from django.http import HttpResponse
 from rest_framework.response import Response
 from rest_framework.decorators import detail_route, list_route
 from rest_framework import viewsets
+from get_random import *
 # Create your views here.
 
 class MainViewSet(viewsets.ViewSet):
