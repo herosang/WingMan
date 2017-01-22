@@ -45,6 +45,7 @@ INSTALLED_APPS = [
 STATICFILES_DIRS = (
     #This lets Django's collectstatic store our bundles
     os.path.join(BASE_DIR, 'assets'), 
+    os.path.join(BASE_DIR, 'Faces', 'backend'),
 )
 
 WEBPACK_LOADER = {

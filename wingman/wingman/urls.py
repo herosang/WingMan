@@ -16,7 +16,10 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 
+from Faces import views
+
 urlpatterns = [
     url(r'^Faces/', include('Faces.urls')),
     url(r'^admin/', admin.site.urls),
+    url(r'', views.index, name="index"),
 ]
