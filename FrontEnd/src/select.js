@@ -1,4 +1,3 @@
-import styles from './css/select.scss';
 import React from 'react';
 
 export default class Select extends React.Component {
@@ -14,11 +13,29 @@ export default class Select extends React.Component {
 
   	}
 
+	const selectContainer = {
+		width: "300px",
+		height: "100px",
+		display: "flex",
+		justifyContent: "center",
+	}
+	const circleDark = {
+	  	borderRadius: "50%",
+	  	width: "65px",
+	  	display: "flex",
+	  	justifyContent: "center",
+	  	alignItems: "center",
+	  	marginRight: "20px",
+	  	marginTop: "20px",
+	  	height: "65px",
+	  	background: "#f0f0f0",
+	}
+
   	
 
     return (
-      <div className = {styles.selectContainer}>
-        <div className = {styles.circleDark}>
+      <div style = {selectContainer}>
+        <div style = {circleDark}>
         	<div style = {CircleLight}>
         		<img src = 
   		 	 		 "https://cdn2.iconfinder.com/data/icons/perfect-flat-icons-2/512/Delete_remove_close_exit_trash_cancel_cross.png" 
@@ -26,10 +43,12 @@ export default class Select extends React.Component {
   			 		 width= "20px" />
         	</div>
         </div>
-        <div className = {styles.circleDark}>
+        <div style = {circleDark}>
         	<div style = {CircleLight}>
-        		<div className = {styles.heart}>
-        		</div>
+        		<img src = 
+  		 	 		 "http://icons.veryicon.com/png/System/Small%20%26%20Flat/heart.png" 
+  				 	 height="25px" 
+  			 		 width= "25px" />
         	</div>
         </div>
       </div>

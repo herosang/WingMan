@@ -1,5 +1,6 @@
 import Header from './header.js';
 import Image from './image.js';
+import Select from './select.js';
 import React from 'react';
 
 
@@ -34,6 +35,7 @@ export default class App extends React.Component {
       	<div style = {app}>
         	<Header />
         	<Image image = {this.state.image}/>
+        	<Select />
         </div> 
       </div>
     )
