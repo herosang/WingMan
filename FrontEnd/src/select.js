@@ -29,25 +29,27 @@ class Select extends React.Component {
 
 	handleClickOne(e) {
   		console.log(this.props);
+  		var component = this;
       $.post('/Faces/api/train/', {
       choice: 'like',
       image_file: this.props.current[this.props.index+1],
     }).done(function( data ) {
-      this.props.populateDone(data.images);
+				component.props.populateDone(data.images);
       });
   		this.props.swipeRight(this.props.current[this.props.index+1]);
   	}
-	
+
 	handleClickTwo(e) {
 		console.log(this.props);
+		var component = this;
     $.post('/Faces/api/train/', {
       choice: 'dislike',
       image_file: this.props.current[this.props.index+1],
     }).done(function( data ) {
-      this.props.populateDone(data.images);
+			component.props.populateDone(data.images);
       });
   		this.props.swipeRight(this.props.current[this.props.index+1]);
-  	}  	
+  	}
 
   render() {
   	const CircleLight = {
@@ -79,23 +81,23 @@ class Select extends React.Component {
 	  	background: "#f0f0f0",
 	}
 
-	
+
 
     return (
       <div style = {selectContainer}>
         <div style = {circleDark} onClick={this.handleClickOne}>
         	<div style = {CircleLight}>
-        		<img src = 
-  		 	 		 "https://cdn2.iconfinder.com/data/icons/perfect-flat-icons-2/512/Delete_remove_close_exit_trash_cancel_cross.png" 
-  				 	 height="20px" 
+        		<img src =
+  		 	 		 "https://cdn2.iconfinder.com/data/icons/perfect-flat-icons-2/512/Delete_remove_close_exit_trash_cancel_cross.png"
+  				 	 height="20px"
   			 		 width= "20px" />
         	</div>
         </div>
         <div style = {circleDark} onClick={this.handleClickTwo}>
         	<div style = {CircleLight}>
-        		<img src = 
-  		 	 		 "http://icons.veryicon.com/png/System/Small%20%26%20Flat/heart.png" 
-  				 	 height="25px" 
+        		<img src =
+  		 	 		 "http://icons.veryicon.com/png/System/Small%20%26%20Flat/heart.png"
+  				 	 height="25px"
   			 		 width= "25px" />
         	</div>
         </div>
@@ -113,17 +115,17 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-	console.log(actionCreators);	
+	console.log(actionCreators);
   return {
   	swipeRight: bindActionCreators(actionCreators.swipeRight, dispatch),
   	swipeLeft: bindActionCreators(actionCreators.swipeLeft, dispatch),
 
   	populate: bindActionCreators(actionCreators.startPopulate, dispatch),
   	populateDone: bindActionCreators(actionCreators.endPopulate, dispatch),
-  	
+
   	send: bindActionCreators(actionCreators.send, dispatch),
   	endSend: bindActionCreators(actionCreators.endSend, dispatch)
-  }	
+  }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Select);
