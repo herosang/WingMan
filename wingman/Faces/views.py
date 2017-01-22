@@ -42,6 +42,7 @@ class ApiViewSet(viewsets.ViewSet):
 	@csrf_exempt
 	@list_route(methods=['post'])
 	def train(self, request):
+		import ipdb; ipdb.set_trace()
 		image_file = request.POST.get('image_file')
 		choice = request.POST.get('choice')
 		index = cache.get('index', 10)
@@ -57,7 +58,7 @@ class ApiViewSet(viewsets.ViewSet):
 		model_file = join(settings.BASE_DIR, 'Faces', 'backend', 'classifier.pkl')
 
 		# Update the model
-		bash_command = "{classfier_file} --dlibFacePredictor {dlib_face_predictor} --networkModel {network_model} update_model {model_file} {image_file} '{choice}'".format(
+		bash_command = "{classfier_file} --dlibFacePredictor {dlib_face_predictor} --networkModel {network_model} update_model {model_file} {image_file} {choice}".format(
 			classfier_file=classifier_file,
 			dlib_face_predictor='/root/openface/models/dlib/shape_predictor_68_face_landmarks.dat',
 			network_model='/root/openface/models/openface/nn4.small2.v1.t7',
