@@ -18,23 +18,25 @@ class Select extends React.Component {
 	componentDidMount(){
 		console.log(this.props);
 		this.props.populate();
-		$.getJSON('/Faces/api/initial')
+    console.log('before');
+		$.getJSON('Faces/api/initial/')
       	.then((data) => {
-        	console.log(data.results);
+          this.props.populateDone(data.images);
       	});
 	}
 
 	handleClickOne(e) {
-  		if(this.props.index > 9){
+  		if(this.props.index >= 9){
   			this.props.send();
   		}else{
+        console.log(this.props.current[this.props.index+1]);1
   			this.props.swipeLeft(this.props.current[this.props.index+1]);
   		}
   	}
 	
 	handleClickTwo(e) {
 		console.log(this.props);
-		if(this.props.index > 9){
+		if(this.props.index >= 9){
   			this.props.send();
   		}else{
   			this.props.swipeRight(this.props.current[this.props.index+1]);
