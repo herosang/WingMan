@@ -3,7 +3,6 @@ import Image from './image.js';
 import Select from './select.js';
 import React from 'react';
 
-
 export default class App extends React.Component {
   constructor(props){
   	super(props);

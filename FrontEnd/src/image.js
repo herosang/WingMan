@@ -1,7 +1,9 @@
 import React from 'react';
+import { connect } from "react-redux";
+import { compose } from 'redux'
 
 
-export default class Image extends React.Component {
+class Image extends React.Component {
   render() {
 
   	const imageStyle = {
@@ -31,3 +33,13 @@ export default class Image extends React.Component {
     )
   }
 }
+
+// compose multiple "decorators"
+const enhance = compose(
+  connect((store) =>{
+  	image: store.currentList[store.index],
+  }),
+)
+
+export default enhance(Image)
+
