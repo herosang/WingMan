@@ -1,0 +1,7 @@
+*.iml
+.idea
+.DS_Store
+virtualenv
+*.pyc
+node_modules
+FrontEnd/node_modules
