@@ -3,7 +3,7 @@ FROM bamos/openface
 RUN useradd -d /root/ -m app
 
 WORKDIR /root/
-RUN pip install Django djangorestframework django-webpack-loader
+RUN pip install Django djangorestframework django-webpack-loader ipdb
 
 COPY ./wingman/ /root/
 RUN chown -R app:app /root/
