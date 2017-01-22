@@ -18,7 +18,7 @@ class Select extends React.Component {
 	componentDidMount(){
 		console.log(this.props);
 		this.props.populate();
-		$.getJSON('/faces/api/inital')
+		$.getJSON('/Faces/api/initial')
       	.then((data) => {
         	console.log(data.results);
       	});
