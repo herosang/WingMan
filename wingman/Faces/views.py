@@ -74,7 +74,7 @@ class ApiViewSet(viewsets.ViewSet):
 		# Random choice
 		random_probability = random.random()
 		if random_probability < exp(-0.1 * index):
-			random_sample = [ files[i] for i in sorted(random.sample(range(len(files)), 1)) ]
+			random_sample = [ files[i] for i in sorted(random.sample(range(len(files)), 10)) ]
 			response = Response({'images': map(lambda filename: static(join('dataset', gender, filename)), random_sample)})
 		else:
 			prediction_file = directory + "/prediction_file.pkl"
