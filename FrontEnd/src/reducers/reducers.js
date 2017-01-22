@@ -28,12 +28,12 @@ function reduceSwipes(state={
     }
 
     case POPULATE_DONE:{
-      state = {...state, fetching: false, current: action.payload, index: 0};
+      state = {...state, fetching: false, current: state.current.concat(action.payload);
       break;
     }
 
     case SEND:{
-      state = {...state, fetching: true, index: 0};
+      state = {...state, fetching: true};
     }
 
     case SEND_END:{

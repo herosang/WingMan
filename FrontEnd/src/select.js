@@ -28,22 +28,25 @@ class Select extends React.Component {
 	}
 
 	handleClickOne(e) {
-  		if(this.props.index >= 9){
-  			this.props.send();
-  		}else{
-        console.log(this.props.current[this.props.index+1]);1
-  			this.props.swipeLeft(this.props.current[this.props.index+1]);
+  		console.log(this.props);
+  		this.props.swipeRight(this.props.current[this.props.index+1]);
+  		$.post('/Faces/api/train/', {
+			choice: 'like',
+			image_file: this.props.current[this.props.index],
+		}).done(function( data ) {
+			this.props.populateDone(data.images);
   		}
   	}
 	
 	handleClickTwo(e) {
 		console.log(this.props);
-		if(this.props.index >= 9){
-  			this.props.send();
-  		}else{
-  			this.props.swipeRight(this.props.current[this.props.index+1]);
+  		this.props.swipeRight(this.props.current[this.props.index+1]);
+  		$.post('/Faces/api/train/', {
+			choice: 'dislike',
+			image_file: this.props.current[this.props.index],
+		}).done(function( data ) {
+			this.props.populateDone(data.images);
   		}
-
   	}  	
 
   render() {
