@@ -1,7 +1,5 @@
-import styles from './css/index.scss';
 import Header from './header.js';
 import Image from './image.js';
-import Select from './select.js';
 import React from 'react';
 
 
@@ -13,12 +11,29 @@ export default class App extends React.Component {
 
   render() {
 
+  	const main = {
+	    width: "100vw",
+	    height: "100vh",
+	    display: "flex",
+	    justifyContent: "center",
+	    alignItems: "center",
+	}
+
+	const app = {
+		width: "320px",
+		display: "flex",
+		justifyContent: "center",
+		alignItems: "center",
+		flexWrap: "wrap",
+		height: "500px",
+		boxShadow: "rgba(0, 0, 0, 0.117647) 0px 1px 6px, rgba(0, 0, 0, 0.117647) 0px 1px 4px",
+	  	borderRadius: "10px",
+	}
     return (
-      <div className = {styles.main}>
-      	<div className = {styles.app}>
+      <div style = {main}>
+      	<div style = {app}>
         	<Header />
         	<Image image = {this.state.image}/>
-        	<Select />
         </div> 
       </div>
     )
