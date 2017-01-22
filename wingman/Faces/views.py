@@ -42,7 +42,6 @@ class ApiViewSet(viewsets.ViewSet):
 	@csrf_exempt
 	@list_route(methods=['post'])
 	def train(self, request):
-		import ipdb; ipdb.set_trace()
 		image_file = request.POST.get('image_file')
 		choice = request.POST.get('choice')
 		index = cache.get('index', 10)
