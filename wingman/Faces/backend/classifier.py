@@ -182,7 +182,7 @@ def infer(args, multiple=False):
     if len(args.imgs) == 1:
         args.imgs = glob(args.imgs[0])
 
-    rand_smpl = [ args.imgs[i] for i in sorted(random.sample(xrange(len(args.imgs)), 50)) ]
+    rand_smpl = [ args.imgs[i] for i in sorted(random.sample(xrange(len(args.imgs)), 25)) ]
     print(rand_smpl)
     for img in rand_smpl:
         print("\n=== {} ===".format(img))
